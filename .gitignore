@@ -1,0 +1,12 @@
+# Ignore the virtual environment directory
+.venv/
+# Ignore editor configuration files
+.vscode/
+.idea/
+# Ignore generated files
+__pycache__/
+*.py[cod]
+*.log
+*.sqlite3
+# Ignore environment variable files
+.env
