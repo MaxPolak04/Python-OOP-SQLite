@@ -13,6 +13,20 @@ class Database:
     def __del__(self):
         self.connection.close()
 
+    def create_table(self, sql: str):
+        self.cursor.execute(sql)
+        self.connection.commit()
 
-if len(argv) > 1 and argv[1] == 'setup':
-    print('Tworze tabele w bazie danych')
+
+if len(argv) == 2 and argv[1] == 'setup':
+    print('Creating table in datebase...')
+    db = Database(getenv('DB_NAME'))
+    db.create_table('''CREATE TABLE urls (
+                                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    category TEXT,
+                                    url TEXT
+                                );''')
+    
+if len(argv) == 4 and argv[1] == 'add':
+    print('Adding new URL adres...')
+    db = Database(getenv('DB_NAME'))
